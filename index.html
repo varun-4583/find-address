@@ -1,0 +1,523 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!doctype html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width,initial-scale=1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Trail Quest&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg1:#0b1020; --bg2:#101b36;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text:#eaf0ff; --muted:#c8d3ffcc;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--accent:#7cf6ff; --good:#60ff9a; --bad:#ff6b7a;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--card:#ffffff12; --border:#ffffff1a; --shadow:0 18px 50px rgba(0,0,0,.35);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--r:18px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>*{box-sizing:border-box}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin:0; color:var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>min-height:100vh;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:</p>
+<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(1100px 600px at 20% 15%, #2a3b7a55, transparent 60%),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(900px 500px at 80% 20%, #00fff033, transparent 55%),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(900px 500px at 60% 90%, #ffdc6a22, transparent 55%),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>linear-gradient(180deg, var(--bg1), var(--bg2));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>overflow-x:hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>header{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width:1100px; margin:26px auto 10px; padding:0 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; gap:14px; justify-content:space-between; align-items:flex-end; flex-wrap:wrap;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1{margin:0; font-size:clamp(22px,3vw,34px); letter-spacing:.4px;}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.sub{margin:6px 0 0; color:var(--muted); font-size:14px; max-width:760px; line-height:1.3}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.right{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end;}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(180deg, #ffffff14, #ffffff0d);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid #ffffff1f; border-radius:999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:10px 12px; font-size:13px; color:var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow:0 8px 28px rgba(0,0,0,.22);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>user-select:none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill b{color:var(--text)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor:pointer; border:1px solid #ffffff24;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(180deg, #7cf6ff22, #7cf6ff0d);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color:var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:10px 12px; border-radius:999px; font-weight:700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow:0 10px 30px rgba(0,0,0,.28);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition:transform .15s ease,border-color .15s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn:hover{transform:translateY(-1px); border-color:#7cf6ff55}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>main{max-width:1100px; margin:8px auto 40px; padding:0 18px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.board{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position:relative; padding:18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:var(--r);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:linear-gradient(180deg, #ffffff12, #ffffff08);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border); box-shadow:var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>overflow:hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.sparkle{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position:absolute; width:7px; height:7px; border-radius:50%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:#ffffffaa; opacity:.14;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>animation:floaty 6s ease-in-out infinite;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pathWrap{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position:relative; height:460px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:calc(var(--r) - 6px);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:</p>
+<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(900px 300px at 30% 110%, #00ffcc11, transparent 70%),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(800px 300px at 70% 0%, #ffd36a11, transparent 70%),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>linear-gradient(180deg, #0b1430aa, #0b143055);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px dashed #ffffff18;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>overflow:hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>svg#trail{position:absolute; inset:0; width:100%; height:100%; pointer-events:none;}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.checkpoint{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position:absolute; width:62px; height:62px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:50%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid; place-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transform:translate(-50%,-50%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow:0 14px 35px rgba(0,0,0,.35);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid #ffffff22;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at 30% 30%, #ffffff33, #ffffff12 55%, #ffffff0a);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor:pointer; user-select:none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition:transform .18s ease, filter .18s ease, opacity .18s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.checkpoint:hover{transform:translate(-50%,-50%) scale(1.04)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.checkpoint.locked{opacity:.55; filter:grayscale(.55) brightness(.9); cursor:not-allowed;}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.checkpoint.done{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-color:#60ff9a66;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at 30% 30%, #60ff9a44, #ffffff12 58%, #ffffff0a);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.checkpoint .num{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:900; font-size:16px; color:#0b1020;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(180deg, #eaf0ff, #cfe0ff);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:6px 10px; border-radius:999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid #ffffffaa;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow:0 8px 18px rgba(0,0,0,.25);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.chest{width:78px; height:78px; font-size:42px; line-height:1}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.chest.locked{opacity:.6; filter:grayscale(.5)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.chest.opened{filter:drop-shadow(0 12px 18px rgba(0,0,0,.35))}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.walker{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position:absolute; width:52px; height:52px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transform:translate(-50%,-50%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid; place-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:34px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>filter:drop-shadow(0 10px 14px rgba(0,0,0,.35));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition:left 900ms cubic-bezier(.2,.9,.2,1), top 900ms cubic-bezier(.2,.9,.2,1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.walker.walking{animation:bob .6s ease-in-out infinite;}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@keyframes bob{0%,100%{transform:translate(-50%,-50%) translateY(0)}50%{transform:translate(-50%,-50%) translateY(-5px)}}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hud{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top:14px; padding:12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:linear-gradient(180deg, #ffffff10, #ffffff07);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.tag{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:13px; color:var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid #ffffff20; background:#ffffff10;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:8px 10px; border-radius:999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; gap:8px; align-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.tag b{color:var(--text)}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Modal */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.backdrop{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position:fixed; inset:0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:rgba(0,0,0,.55);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:none; align-items:center; justify-content:center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:18px; z-index:50;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.backdrop.show{display:flex;}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.modal{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width:min(640px,100%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:22px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid #ffffff22;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(180deg, #0b1430f2, #081024f2);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow:0 30px 90px rgba(0,0,0,.55);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>overflow:hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.modalHeader{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:16px 18px 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; justify-content:space-between; gap:12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-bottom:1px solid #ffffff18;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(180deg, #ffffff10, transparent);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.modalHeader h2{margin:0; font-size:18px;}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.modalHeader p{margin:6px 0 0; color:var(--muted); font-size:13px; line-height:1.35;}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.closeX{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor:pointer; width:36px; height:36px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:12px; border:1px solid #ffffff22;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:#ffffff10; color:var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid; place-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.modalBody{padding:14px 18px 18px; display:flex; flex-direction:column; gap:10px;}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.choice{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid #ffffff20;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(180deg, #ffffff12, #ffffff08);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; gap:10px; align-items:flex-start;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor:pointer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition:transform .12s ease, border-color .12s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.choice:hover{transform:translateY(-1px); border-color:#7cf6ff55;}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.letter{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width:30px; height:30px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:#ffffff14; border:1px solid #ffffff1f;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid; place-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:800;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex:0 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.txt{font-weight:650; line-height:1.25}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.feedback{min-height:22px; font-size:13px; color:var(--muted)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.feedback.good{color:var(--good)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.feedback.bad{color:var(--bad)}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.reveal{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top:12px; padding:14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid #ffffff1a; border-radius:16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(180deg, #ffffff10, #ffffff06);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.reveal.show{display:block}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.coord{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top:10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:10px 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px dashed #ffffff35;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:#00000022;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>word-break:break-word;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.toast{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position:fixed; left:50%; bottom:18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transform:translateX(-50%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:10px 12px; border-radius:999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid #ffffff24;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:#0b1430e8;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow:0 18px 55px rgba(0,0,0,.45);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color:var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>z-index:60;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:13px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width:min(720px,92vw);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.toast.show{display:block}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width:520px){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.pathWrap{height:520px;}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.checkpoint{width:56px; height:56px;}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.walker{width:48px; height:48px; font-size:32px;}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h1&gt;✨ Trail Quest&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="sub"&gt;Answer the 4 checkpoint questions correctly to unlock the treasure chest and reveal your coordinate.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="right"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pill"&gt;Progress: &lt;b id="progressText"&gt;0/4&lt;/b&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="btn" id="resetBtn"&gt;Reset&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;main&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="board"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="sparkle" style="left:8%;top:18%;animation-delay:.2s"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="sparkle" style="left:22%;top:72%;animation-delay:1.1s"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="sparkle" style="left:41%;top:34%;animation-delay:2.2s"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="sparkle" style="left:67%;top:24%;animation-delay:.7s"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="sparkle" style="left:86%;top:64%;animation-delay:1.6s"&gt;&lt;/span&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pathWrap" id="pathWrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;svg id="trail" viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;path d="M120,430 C240,360 260,250 380,230 C520,205 560,320 690,295 C820,270 820,160 920,120"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>fill="none" stroke="rgba(124,246,255,0.10)" stroke-width="18" stroke-linecap="round" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;path d="M120,430 C240,360 260,250 380,230 C520,205 560,320 690,295 C820,270 820,160 920,120"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="10" stroke-linecap="round"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>stroke-dasharray="3 14"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;path d="M120,430 C240,360 260,250 380,230 C520,205 560,320 690,295 C820,270 820,160 920,120"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>fill="none" stroke="rgba(255,211,106,0.22)" stroke-width="4" stroke-linecap="round"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>stroke-dasharray="1 22"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/svg&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="walker" id="walker" title="Adventurer"&gt;🧙‍♂️&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="checkpoint" id="cp1" data-index="0" style="left:12%; top:83%;"&gt;&lt;div class="num"&gt;1&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="checkpoint locked" id="cp2" data-index="1" style="left:36%; top:46%;"&gt;&lt;div class="num"&gt;2&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="checkpoint locked" id="cp3" data-index="2" style="left:66%; top:58%;"&gt;&lt;div class="num"&gt;3&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="checkpoint locked" id="cp4" data-index="3" style="left:86%; top:33%;"&gt;&lt;div class="num"&gt;4&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="checkpoint locked chest" id="chest" data-index="4" style="left:93%; top:22%;" title="Treasure!"&gt;🧰&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="hud"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="tag"&gt;🧭 Current step: &lt;b id="stepText"&gt;1&lt;/b&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="tag"&gt;🔒 Locked checkpoints can’t be opened&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="tag"&gt;Tip: click the next checkpoint&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="backdrop" id="backdrop" role="dialog" aria-modal="true" aria-labelledby="qTitle"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="modal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="modalHeader"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2 id="qTitle"&gt;Question&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p id="qSub"&gt;Choose the correct answer to proceed.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="closeX" id="closeModal" aria-label="Close"&gt;✕&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="modalBody"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="choices"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="feedback" id="feedback"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="reveal" id="reveal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="font-weight:800;"&gt;🎉 Treasure unlocked!&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="margin-top:6px; color:var(--muted); font-size:13px;"&gt;Here are your coordinates:&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="coord" id="coordText"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="toast" id="toast"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>/***************</p>
+<p class="p1"><span class="Apple-converted-space">     </span>* EDIT THESE! *</p>
+<p class="p1"><span class="Apple-converted-space">     </span>***************/</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const FINAL_COORDINATE = "51.5074° N, 0.1278° W"; // &lt;- put your coordinate here</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const WALKER_EMOJI = "🧙‍♂️"; // e.g. 🧚‍♀️ 🐉 🧝‍♂️ 🐾</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const QUESTIONS = [</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ title:"Checkpoint 1", prompt:"Which one is a prime number?",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>choices:["21","27","29","35"], correctIndex:2 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ title:"Checkpoint 2", prompt:"What’s the capital of Japan?",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>choices:["Kyoto","Tokyo","Osaka","Sapporo"], correctIndex:1 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ title:"Checkpoint 3", prompt:"Area of a circle is…",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>choices:["2πr","πr²","πd","r²"], correctIndex:1 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ title:"Checkpoint 4", prompt:"Pick the correct statement:",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>choices:["The sun orbits Earth","Water boils at 50°C","Humans need oxygen","A triangle has 4 sides"], correctIndex:2 }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/****************</p>
+<p class="p1"><span class="Apple-converted-space">     </span>* APP LOGIC<span class="Apple-converted-space">    </span>*</p>
+<p class="p1"><span class="Apple-converted-space">     </span>****************/</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const el = (id) =&gt; document.getElementById(id);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const walker = el("walker");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const progressText = el("progressText");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const stepText = el("stepText");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const backdrop = el("backdrop");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const closeModalBtn = el("closeModal");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const qTitle = el("qTitle");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const qSub = el("qSub");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const choicesWrap = el("choices");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const feedback = el("feedback");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const reveal = el("reveal");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const coordText = el("coordText");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const toast = el("toast");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const cps = [el("cp1"), el("cp2"), el("cp3"), el("cp4")];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const chest = el("chest");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let state = { unlocked: 0, modalFor: null };</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function showToast(msg){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>toast.textContent = msg;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>toast.classList.add("show");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>clearTimeout(showToast._t);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>showToast._t = setTimeout(()=&gt; toast.classList.remove("show"), 2200);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function setProgress(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>progressText.textContent = `${state.unlocked}/4`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>stepText.textContent = Math.min(state.unlocked + 1, 5);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function cpCenter(cp){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const wrapRect = el("pathWrap").getBoundingClientRect();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const r = cp.getBoundingClientRect();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return { x:(r.left - wrapRect.left) + r.width/2, y:(r.top - wrapRect.top) + r.height/2 };</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function moveWalkerToElement(targetEl){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const { x, y } = cpCenter(targetEl);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>walker.classList.add("walking");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>walker.style.left = `${x}px`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>walker.style.top<span class="Apple-converted-space">  </span>= `${y}px`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>clearTimeout(moveWalkerToElement._t);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>moveWalkerToElement._t = setTimeout(()=&gt; walker.classList.remove("walking"), 950);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function lockUnlockUI(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cps.forEach((cp, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const done = i &lt; state.unlocked;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const unlocked = i &lt;= state.unlocked;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>cp.classList.toggle("done", done);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>cp.classList.toggle("locked", !unlocked);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const chestUnlocked = state.unlocked &gt;= 4;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>chest.classList.toggle("locked", !chestUnlocked);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>chest.classList.toggle("opened", chestUnlocked);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function closeModal(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>backdrop.classList.remove("show");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.modalFor = null;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>feedback.textContent = "";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>feedback.className = "feedback";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>reveal.classList.remove("show");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function openModalForCheckpoint(indexOrChest){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>feedback.textContent = "";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>feedback.className = "feedback";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>reveal.classList.remove("show");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (indexOrChest === "chest"){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (state.unlocked &lt; 4) return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>state.modalFor = "chest";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>qTitle.textContent = "Treasure Chest";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>qSub.textContent = "You completed the quest. Claim your coordinates!";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>choicesWrap.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="choice" id="openChestBtn"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="letter"&gt;🎁&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="txt"&gt;Open the chest&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const b = document.getElementById("openChestBtn");</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (b) b.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>feedback.textContent = "Chest opened! ✨";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>feedback.classList.add("good");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>coordText.textContent = FINAL_COORDINATE;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reveal.classList.add("show");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>chest.classList.add("opened");</p>
+<p class="p1"><span class="Apple-converted-space">          </span>};</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}, 0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>backdrop.classList.add("show");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const q = QUESTIONS[indexOrChest];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.modalFor = indexOrChest;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>qTitle.textContent = q.title;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>qSub.textContent = q.prompt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const letters = ["A","B","C","D"];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>choicesWrap.innerHTML = q.choices.map((c, i) =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="choice" data-choice="${i}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="letter"&gt;${letters[i]}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="txt"&gt;${c}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>`).join("");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>[...choicesWrap.querySelectorAll(".choice")].forEach(node =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>node.addEventListener("click", () =&gt; checkAnswer(Number(node.dataset.choice)));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>backdrop.classList.add("show");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function checkAnswer(choiceIndex){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const idx = state.modalFor;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (typeof idx !== "number") return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const q = QUESTIONS[idx];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (choiceIndex === q.correctIndex){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedback.textContent = "Correct! ✅ Next checkpoint unlocked.";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedback.classList.add("good");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (idx === state.unlocked){</p>
+<p class="p1"><span class="Apple-converted-space">          </span>state.unlocked++;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>setProgress();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>lockUnlockUI();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>showToast("Nice! Moving forward…");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (state.unlocked &lt; 4) moveWalkerToElement(cps[state.unlocked]);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>else moveWalkerToElement(chest);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}, 350);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>setTimeout(closeModal, 650);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedback.textContent = "Not quite—try again! ❌";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedback.classList.remove("good");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedback.classList.add("bad");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function init(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>walker.textContent = WALKER_EMOJI;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// initial position</p>
+<p class="p1"><span class="Apple-converted-space">      </span>moveWalkerToElement(cps[0]);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setProgress();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>lockUnlockUI();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>cps.forEach((cp, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>cp.addEventListener("click", () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const isUnlocked = i &lt;= state.unlocked;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const isNext = i === state.unlocked;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (!isUnlocked) return;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (!isNext &amp;&amp; i &lt; state.unlocked){ showToast("Already completed ✅"); return; }</p>
+<p class="p1"><span class="Apple-converted-space">          </span>moveWalkerToElement(cp);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>openModalForCheckpoint(i);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>chest.addEventListener("click", () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (state.unlocked &lt; 4) return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>moveWalkerToElement(chest);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>openModalForCheckpoint("chest");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>closeModalBtn.addEventListener("click", closeModal);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>backdrop.addEventListener("click", (e) =&gt; { if (e.target === backdrop) closeModal(); });</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>el("resetBtn").addEventListener("click", () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>state = { unlocked: 0, modalFor: null };</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setProgress(); lockUnlockUI(); closeModal();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>moveWalkerToElement(cps[0]);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showToast("Quest reset ✨");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>init();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
